@@ -52,7 +52,7 @@ var rollbar = new Rollbar({
 })
 
 // record a generic message and send it to Rollbar
-rollbar.log('Hello world!')
+rollbar.log('Server started!')
 
 app.get("/api/robots", (req, res) => {
   try {

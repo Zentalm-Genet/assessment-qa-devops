@@ -1,3 +1,6 @@
+const axios = require('axios');
+const baseURL = 'http://ec2-3-14-128-67.us-east-2.compute.amazonaws.com';
+
 const drawBtn = document.querySelector("#draw");
 const choicesDiv = document.querySelector("#choices");
 const compDuoDiv = document.querySelector("#comp-duo");
@@ -117,8 +120,10 @@ const putBotBack = (id) => {
   }
 };
 
+// Create a new Axios instance with the custom base URL
+
 const drawFive = () => {
-  axios.get("http://localhost:8000/api/robots/shuffled").then((res) => {
+  axios.get(`${baseURL}/api/robots/shuffled`).then((res) => {
     const shuffledBots = res.data;
     choices = shuffledBots.slice(0, 5);
     compDuo = shuffledBots.slice(6, 8);
@@ -139,7 +144,7 @@ const duel = () => {
     .querySelectorAll(".bot-btn")
     .forEach((btn) => btn.classList.add("hide"));
   setTimeout(() => {
-    axios.post("http://localhost:8000/api/duel", { compDuo, playerDuo }).then(({ data }) => {
+    axios.post(`${baseURL}/api/duel`, { compDuo, playerDuo }).then(({ data }) => {
       resultsText.textContent = data;
       playAgainBtn.classList.remove("hide");
       getPlayerStats();
@@ -161,14 +166,14 @@ const reset = () => {
 };
 
 const getPlayerStats = () => {
-  axios.get("http://localhost:8000/api/player").then(({ data: { wins, losses } }) => {
+  axios.get(`${baseURL}/api/player`).then(({ data: { wins, losses } }) => {
     winsText.textContent = `Wins: ${wins}`;
     lossesTest.textContent = `Losses: ${losses}`;
   });
 };
 
 const getAllBots = () => {
-  axios.get("http://localhost:8000/api/robots").then(({ data }) => {
+  axios.get(`${baseURL}/api/robots`).then(({ data }) => {
     allBotsDiv.innerHTML = "";
 
     data.forEach((bot) => {
