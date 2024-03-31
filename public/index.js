@@ -1,4 +1,3 @@
-const axios = require('axios');
 const baseURL = 'http://ec2-3-14-128-67.us-east-2.compute.amazonaws.com';
 
 const drawBtn = document.querySelector("#draw");
