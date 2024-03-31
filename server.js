@@ -8,7 +8,9 @@ const Rollbar = require('rollbar');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://ec2-3-14-128-67.us-east-2.compute.amazonaws.com',
+}));
 
 // Middleware to serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
