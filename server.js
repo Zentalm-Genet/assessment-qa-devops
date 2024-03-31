@@ -1,7 +1,7 @@
+const cors = require('cors');
 const express = require("express");
 const shuffle = require("./src/shuffle");
 const path = require('path');
-const cors = require('cors');
 const bots = require("./src/botsData");
 const Rollbar = require('rollbar');
 
