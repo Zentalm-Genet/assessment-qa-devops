@@ -22,7 +22,7 @@ describe("Duel Duo tests", () => {
 
     // Wait for the DUEL! button to be clickable
     const duelBtn = await driver.wait(until.elementLocated(By.id("duel")), 20000); // Increased timeout duration
-    await driver.wait(until.elementIsVisible(duelBtn), 20000); // Increased timeout duration
+    await driver.wait(until.elementIsVisible(duelBtn), 20000); 
 
     // Click the DUEL! button
     await duelBtn.click();
@@ -39,19 +39,19 @@ describe("Duel Duo tests", () => {
   });
 
   test("Removing a bot from Duo returns it to choices", async () => {
-    // Navigate to the game page
+   
     await driver.get("http://localhost:8000");
 
     // Wait for the bot card to be present
-    const botCard = await driver.wait(until.elementLocated(By.className("bot-card")), 20000); // Increased timeout duration
-    await driver.wait(until.elementIsVisible(botCard), 20000); // Increased timeout duration
+    const botCard = await driver.wait(until.elementLocated(By.className("bot-card")), 20000); 
+    await driver.wait(until.elementIsVisible(botCard), 20000); 
 
     // Click the Add to Duo button
     const addToDuoBtn = await botCard.findElement(By.className("bot-btn"));
     await addToDuoBtn.click();
 
     // Wait for the bot card to be removed
-    await driver.wait(until.stalenessOf(botCard), 20000); // Increased timeout duration
+    await driver.wait(until.stalenessOf(botCard), 20000); 
 
     // Ensure that the bot card is back in choices
     const choicesDiv = await driver.findElement(By.id("choices"));
